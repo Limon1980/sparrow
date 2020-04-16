@@ -2,6 +2,12 @@
 
 add_action( 'wp_enqueue_scripts', 'theme_styles');
 add_action( 'wp_enqueue_scripts', 'theme_scripts');
+add_action('after_setup_theme', 'theme_register_nav_menu');
+
+function theme_register_nav_menu(){
+  register_nav_menu( 'top', 'Меню в шапке' );
+  register_nav_menu( 'bottom', 'Меню в футоре' );
+}
 
 
 function theme_styles() {
