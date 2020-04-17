@@ -4,6 +4,22 @@ add_action( 'wp_enqueue_scripts', 'theme_styles');
 add_action( 'wp_enqueue_scripts', 'theme_scripts');
 add_action('after_setup_theme', 'theme_register_nav_menu');
 add_action('widgets_init', 'register_my_widgets');
+add_action( 'after_setup_theme', 'sparrow_setup' );
+
+
+function sparrow_setup() {
+  add_theme_support(
+'custom-logo', array(
+'height' => 48,
+'width'  => 226
+)
+);
+}
+
+
+
+
+
 
 function theme_register_nav_menu(){
   register_nav_menu( 'top', 'Меню в шапке' );
