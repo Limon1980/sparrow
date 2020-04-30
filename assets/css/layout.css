@@ -99,6 +99,11 @@ img { border-radius: 3px; }
 #sidebar .link-list li a:hover {
    color: #313131;
 }
+#sidebar .link-list li.current-cat a {
+  border: none;
+  color: #313131;
+}
+
 
 /* tag cloud */
 #sidebar .tagcloud {
@@ -130,6 +135,8 @@ img { border-radius: 3px; }
     color: #fff;
     background: #11ABB0;
 }
+
+
 
 /* Photostream */
 #sidebar .photostream {
