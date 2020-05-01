@@ -185,6 +185,7 @@
                 // параметры по умолчанию
         $posts = get_posts( array(
           'numberposts' => 3,
+          'category'    => 3,
           'order' => 'ASC',
           'post_type'   => 'post',
           'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
