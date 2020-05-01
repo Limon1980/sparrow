@@ -259,6 +259,7 @@
 
             <aside id="sidebar">
             <?php get_sidebar();?>
+
             </aside> <!-- Sidebar End -->
 
          </div> <!-- Comments End -->

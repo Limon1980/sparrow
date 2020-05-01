@@ -83,5 +83,69 @@ function theme_scripts() {
     ) );
   }
 
-  
+	add_action('my_act', 'my_func');
+
+	function my_func(){
+
+		add_filter( 'excerpt_length', function(){
+			return 15;
+		} );
+	
+		add_filter('excerpt_more', function($more) {
+			return '...';
+		});
+
+		global $post;
+		$posts = get_posts( array(
+			'numberposts' => 3,
+			'order' => 'DESC',
+			'post_type'   => 'post',
+			'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+		) );
+
+		foreach( $posts as $post ){
+			setup_postdata($post);
+				// формат вывода the_title() ...
+
+
+			
+				echo '<li><time class="date" datetime="">'.get_the_date('F jS, Y' ).' </time><a href="'.get_the_permalink( ).'">'.get_the_title().'</a></li>';
+				echo '<span>'. the_excerpt('10'). '</span>';
+
+		}
+		wp_reset_postdata();
+	}
+	
+	add_shortcode( 'my_short', 'my_short_func' );
+
+	function my_short_func($atts){
+
+		$atts = shortcode_atts( [
+			'post' => '',
+		], $atts );
+
+		global $post;
+		$posts = get_posts( array(
+			'numberposts' => $atts['post'],
+			'order' => 'DESC',
+			'post_type'   => 'post',
+			'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+		) );
+
+		foreach( $posts as $post ){
+			setup_postdata($post);
+				// формат вывода the_title() ...
+
+				$text .= '<li><a href="'.get_the_permalink( ).'">'.get_the_title().'</a></li>';
+
+		}
+		wp_reset_postdata();
+
+
+
+
+		return $text;
+ }
+
+
 ?>
