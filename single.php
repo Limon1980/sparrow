@@ -24,21 +24,19 @@
       <div id="page-content" class="row">
 
          <div id="primary" class="eight columns">
-
+         <?php if(have_posts()){ while (have_posts()) { the_post(); ?>
             <article class="post">
 
                <div class="entry-header cf">
 
-                  <h1>Proin gravida nibh vel velit auctor aliquet Aenean sollicitudin auctor.</h1>
+                  <h1><?php the_title(); ?></h1>
 
                   <p class="post-meta">
 
-                     <time class="date" datetime="2014-01-14T11:24">Jan 14, 2014</time>
+                     <time class="date" datetime=""><?php the_date('F jS, Y' )?></time>
                      /
                      <span class="categories">
-                     <a href="#">Design</a> /
-                     <a href="#">User Inferface</a> /
-                     <a href="#">Web Design</a>
+                     <?php the_category( ' / ' ); ?>
                      </span>
 
                   </p>
@@ -46,33 +44,16 @@
                </div>
 
                <div class="post-thumb">
-                  <img src="images/post-image/post-image-1300x500-01.jpg" alt="post-image" title="post-image">
+               <?php the_post_thumbnail( 'large'); ?>
                </div>
 
                <div class="post-content">
 
-                  <p class="lead">Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor,
-                  nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate
-                  cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a
-                  ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. </p>
-
-                  <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor,
-                  nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate
-                  cursus a sit amet mauris. Morbi accumsan ipsum velit. Duis sed odio sit amet nibh vulputate
-                  cursus a sit amet mauris. Morbi accumsan ipsum velit.</p>
-
-                  <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-                  deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate.
-                  At vero eos et accusamus et iusto odio <a href="#">dignissimos ducimus</a> qui blanditiis praesentium.</p>
-
-                  <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor,
-                  nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate
-                  cursus a sit amet mauris. Morbi accumsan ipsum velit. Duis sed odio sit amet nibh vulputate
-                  cursus a sit amet mauris. Morbi accumsan ipsum velit.</p>
+                <?php the_content( );?>
 
                   <p class="tags">
   			            <span>Tagged in </span>:
-  				         <a href="#">orci</a>, <a href="#">lectus</a>, <a href="#">varius</a>, <a href="#">turpis</a>
+                    <?php the_tags( '', '|' ) ?>
   			         </p>
 
                   <div class="bio cf">
@@ -97,6 +78,11 @@
                </div>
 
             </article> <!-- post end -->
+
+            <?php } // конец while ?>
+                           <!-- Pagination -->
+            <?php the_posts_pagination(); ?>
+           <?php } // конец if ?>
 
             <!-- Comments
             ================================================== -->
