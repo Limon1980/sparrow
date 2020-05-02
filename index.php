@@ -1,4 +1,9 @@
-<?php get_header();?>
+<?php
+/*
+Template Name: Contacts
+Template Post Type: post, page, product
+*/
+ get_header();?>
 
    <!-- Intro Section
    ================================================== -->

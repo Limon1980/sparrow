@@ -7,6 +7,7 @@ add_action('widgets_init', 'register_my_widgets');
 add_action( 'after_setup_theme', 'sparrow_setup' );
 
 
+
 function sparrow_setup() {
   add_theme_support(
 'custom-logo', array(
@@ -25,7 +26,8 @@ function theme_register_nav_menu(){
   register_nav_menu( 'top', 'Меню в шапке' );
   register_nav_menu( 'bottom', 'Меню в футоре' );
   add_theme_support( 'title-tag' );
-  add_theme_support( 'post-thumbnails', array( 'post' ) ); 
+	add_theme_support( 'post-thumbnails', array( 'post' ) ); 
+	add_theme_support( 'post-formats', array( 'aside', 'gallery', 'video' ) );
   add_image_size( 'post-thumb', 1300, 500, true ); 
   // удаляет H2 из шаблона пагинации
 add_filter('navigation_markup_template', 'my_navigation_template', 10, 2 );
@@ -121,7 +123,7 @@ function theme_scripts() {
 	function my_short_func($atts){
 
 		$atts = shortcode_atts( [
-			'post' => '',
+			'post' => '3', // здесь значение по умолчанию
 		], $atts );
 
 		global $post;
