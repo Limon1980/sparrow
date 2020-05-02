@@ -24,18 +24,18 @@
       <div id="page-content" class="row">
 
          <div id="primary" class="eight columns">
-         <?php 
-                // параметры по умолчанию
-        $posts = get_posts( array(
-          'numberposts' => 3,
-          'order' => 'ASC',
-          'post_type'   => 'post',
-          'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
-        ) );
+               <?php 
+                     // параметры по умолчанию
+            $posts = get_posts( array(
+               'numberposts' => 3,
+               'order' => 'ASC',
+               'post_type'   => 'post',
+               'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+            ) );
 
-        foreach( $posts as $post ){
-          setup_postdata($post);
-            // формат вывода the_title() ...
+            foreach( $posts as $post ){
+               setup_postdata($post);
+                  // формат вывода the_title() ...
 
             ?>
            
@@ -80,7 +80,10 @@
 
          <div id="secondary" class="four columns end">
 
-          <?php get_sidebar();?>
+               <aside id="sidebar">
+               <?php get_sidebar();?>
+
+               </aside> <!-- Sidebar End -->
 
          </div> <!-- Secondary End-->
 

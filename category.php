@@ -68,7 +68,10 @@
 
          <div id="secondary" class="four columns end">
 
-          <?php get_sidebar();?>
+               <aside id="sidebar">
+               <?php get_sidebar();?>
+
+               </aside> <!-- Sidebar End -->
 
          </div> <!-- Secondary End-->
 

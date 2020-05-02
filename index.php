@@ -216,8 +216,8 @@ Template Post Type: post, page, product
 
    <div class="two columns post-meta end">
       <p>
-      <time datetime="2014-01-31" class="post-date" pubdate=""><?php the_date('D M, Y' )?></time>
-      <span class="dauthor"><?php the_author(); ?></span>
+      <time datetime="2014-01-31" class="post-date" pubdate=""><?php the_date('d M, Y' )?></time>
+      <span class="dauthor"><?php the_author(); ?> <i class="fas fa-eye"></i> <?php echo get_post_meta ($post->ID,'views',true); ?></span>
       </p>
    </div>
 
