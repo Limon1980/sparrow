@@ -27,7 +27,7 @@
                <?php 
                      // параметры по умолчанию
             $posts = get_posts( array(
-               'numberposts' => 3,
+               'numberposts' => 1,
                'order' => 'ASC',
                'post_type'   => 'post',
                'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
@@ -69,9 +69,13 @@
                </div>
 
             </article> <!-- post end -->
-                     <?php
+                     <?php  
+                     
+      
+               
                }
-
+              
+               
                wp_reset_postdata(); // сброс
                ?>
 
