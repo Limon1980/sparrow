@@ -41,7 +41,7 @@ function register_post_types(){
 		//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
 		'hierarchical'        => false,
 		'supports'            => [ 'title', 'editor', 'author', 'thumbnail', 'post-formats', 'excerpt', 'post-formats'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
-		'taxonomies'          => [],
+		'taxonomies'          => ['category'],
 		'has_archive'         => false,
 		'rewrite'             => true,
 		'query_var'           => true,
@@ -255,5 +255,7 @@ function my_pagenavi() {
 
 	echo $result;
 }
+
+
 
 ?>

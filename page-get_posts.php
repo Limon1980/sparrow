@@ -25,34 +25,18 @@
 
          <div id="primary" class="eight columns">
                <?php 
-            //    global $post;
                      // параметры по умолчанию
-            // $posts = get_posts( array(
-            //    'numberposts' => 3,
-            //    'category' => 0,
-            //    'order' => 'ASC',
-            //    'post_type'   => 'post',
-            //    'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
-            // ) );
+            $posts = get_posts( array(
+               'numberposts' => 3,
+               'category' => 0,
+               'order' => 'ASC',
+               'post_type'   => 'post',
+               'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+            ) );
 
-
-            
-          $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-          $args = array(
-            'posts_per_page' => 2,
-            'order'          => 'ASC',
-            'post_type'      => 'post',
-            'paged'          => $paged
-          );
-          $wp_query = new WP_Query( $args );
-
-            // foreach( $posts as $post ){
-            //    setup_postdata($post);
-            // формат вывода the_title() ...
-
-            if( $wp_query->have_posts() ) {
-               while( $wp_query->have_posts() ){
-                 $wp_query->the_post();
+            foreach( $posts as $post ){
+               setup_postdata($post);
+                  // формат вывода the_title() ...
 
             ?>
            
@@ -86,19 +70,42 @@
                </div>
 
             </article> <!-- post end -->
-                     <?php   
-             
+                     <?php  
+                      
+               
                }
+              // След./Пред. Пост.
+                     $post_nav = get_the_post_navigation( array(
+                        'next_text' => '<span class="meta-nav" aria-hidden="true">Далее</span> ' .
+                           '<span class="screen-reader-text">Следующая запись</span> ' .
+                           '<span class="post-title">%title</span>',
+                        'prev_text' => '<span class="meta-nav" aria-hidden="true">Назад</span> ' .
+                           '<span class="screen-reader-text">Предыдущая запись</span> ' .
+                           '<span class="post-title">%title</span>',
+                     ) );
 
-              the_posts_pagination( );
-             
-            
-               wp_reset_postdata(); // сброс 
-            }
-              
+                     
+
+                     echo $post_nav;
+
+               
+               wp_reset_postdata(); // сброс
                ?>
 
 
+<?php
+
+       
+               $pred_post = get_previous_post(); // получили и записали в переменную объект предыдущего поста
+               $next_post = get_next_post(); // получили и записали в переменную объект предыдущего поста
+               ?>
+      
+      
+               <ul class="post-nav cf">
+               
+                  <li class="prev"><a href="<?php echo get_permalink( $pred_post )?>" rel="prev"><strong>Previous Entry</strong> <?php echo get_the_title( $pred_post )?></a></li>
+                  <li class="next"><a href="<?php echo get_permalink( $next_post )?>" rel="next"><strong>Next Entry</strong> <?php echo get_the_title( $next_post )?></a></li>
+               </ul>
                
 
          </div> <!-- Primary End-->
