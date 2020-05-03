@@ -25,16 +25,6 @@
             </article> <!-- post end -->
 
             <?php } // конец while ?>
-            <?php
-         $pred_post = get_previous_post(); // получили и записали в переменную объект предыдущего поста
-         $next_post = get_next_post(); // получили и записали в переменную объект предыдущего поста
-         ?>
 
-
-         <ul class="post-nav cf">
-         
-			   <li class="prev"><a href="<?php echo get_permalink( $pred_post )?>" rel="prev"><strong>Previous Entry</strong> <?php echo get_the_title( $pred_post )?></a></li>
-				<li class="next"><a href="<?php echo get_permalink( $next_post )?>" rel="next"><strong>Next Entry</strong> <?php echo get_the_title( $next_post )?></a></li>
-			</ul>
            <?php } // конец if ?>
            
