@@ -38,14 +38,14 @@ Template Post Type: portfolio
 
                   <div class="entry-description">
 
-                  <?php the_content();?>
+                  <p><?php the_field('description')?></p>
 
                   </div>
 
                   <ul class="portfolio-meta-list">
-						   <li><span>Date: </span><?php the_date('F jS, Y' )?></li>
-						   <li><span>Client </span><?php the_author();?></li>
-						   <li><span>Skills: </span><?php the_tags( '', ',' ) ?></li>
+						   <li><span>Date: </span><?php the_field('proj-date')?></li>
+						   <li><span>Client </span><?php the_field('client')?></li>
+						   <li><span>Skills: </span><?php the_field('skils')?></li>
 				      </ul>
 
                   <a class="button" href="http://behance.net">View project</a>
@@ -54,15 +54,17 @@ Template Post Type: portfolio
 
             <div id="primary" class="eight columns">
 
-               <div class="entry-media">
+            <div class="entry-media">
 
-                  <?php the_post_thumbnail( 'large'); ?>
+            <img src="<?php the_field('foto1')?>" alt="" />
 
-               </div>
+            <img src="<?php the_field('foto2')?>" alt="" />
+
+            </div>
 
                <div class="entry-excerpt">
 
-               <p><?php the_excerpt();?></p>
+               <p><?php the_field('excerpt')?></p>
 
 					</div>
 

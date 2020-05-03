@@ -74,7 +74,7 @@ Template Post Type: post, page, product
                         </a>
           					<div class="portfolio-item-meta">
           					   <h5><a href="<?php the_permalink();?>"><?php the_title();?></a></h5>
-                           <p><?php the_excerpt();?></p>
+                           <p><?php the_field('excerpt')?></p>
           					</div>
                      </div>
           			</div>
