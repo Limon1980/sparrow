@@ -17,13 +17,15 @@
 
                </div>
 
-               <div class="post-thumb">
-               <?php the_post_thumbnail( 'large'); ?>
-               </div>
+   
+               <div class="embed-container">
+                <?php the_field('video'); ?>
+                  </div>
 
                <div class="post-content">
 
                 <?php the_content( );?>
+             
 
                   <p class="tags">
   			            <span>Tagged in </span>:
@@ -40,6 +42,7 @@
                         <p>Jon Doe is lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate
                         cursus a sit amet mauris. Morbi accumsan ipsum velit. Duis sed odio sit amet nibh vulputate
                         <a href="#">cursus</a> a sit <a href="#">amet mauris</a>. Morbi elit consequat ipsum.</p>
+                       
                      </div>
 
                   </div>
