@@ -6,7 +6,7 @@ add_action('after_setup_theme', 'theme_register_nav_menu');
 add_action('widgets_init', 'register_my_widgets');
 add_action( 'after_setup_theme', 'sparrow_setup' );
 add_action( 'init', 'register_post_types' );
-
+add_action( 'init', 'create_taxonomy' );
 function register_post_types(){
 	register_post_type( 'portfolio', [
 		'label'  => null,
@@ -27,7 +27,7 @@ function register_post_types(){
 		'description'         => 'Это наши работы в портфолио',
 		'public'              => true,
 		'publicly_queryable'  => true, // зависит от public
-		'exclude_from_search' => true, // зависит от public
+		'exclude_from_search' => false, // зависит от public
 		'show_ui'             => true, // зависит от public
 		'show_in_nav_menus'   => true, // зависит от public
 		'show_in_menu'        => true, // показывать ли в меню адмнки
@@ -41,14 +41,60 @@ function register_post_types(){
 		//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
 		'hierarchical'        => false,
 		'supports'            => [ 'title', 'editor', 'author', 'thumbnail', 'post-formats', 'excerpt', 'post-formats'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
-		'taxonomies'          => [],
+		'taxonomies'          => ['skills'],
 		'has_archive'         => false,
 		'rewrite'             => true,
-		'query_var'           => true,
+		'query_var'           => false,
 	] );
 }
 
+// хук для регистрации
 
+function create_taxonomy(){
+
+	// список параметров: wp-kama.ru/function/get_taxonomy_labels
+	register_taxonomy( 'skills', [ 'portfolio' ], [ 
+		'label'                 => '', // определяется параметром $labels->name
+		'labels'                => [
+			'name'              => 'Навыки',
+			'singular_name'     => 'Навык',
+			'search_items'      => 'Найти навык',
+			'all_items'         => 'Все навыки',
+			'view_item '        => 'Смотреть навык',
+			'parent_item'       => 'Родительский навык',
+			'parent_item_colon' => 'Родительский Навык:',
+			'edit_item'         => 'Изменить навык',
+			'update_item'       => 'Обновить навык',
+			'add_new_item'      => 'Добавить новый навык',
+			'new_item_name'     => 'Новое имя навыка',
+			'menu_name'         => 'Навыки',
+		],
+		'description'           => 'Навыки, которые использовались в работе', // описание таксономии
+		'public'                => true,
+		// 'publicly_queryable'    => true, // равен аргументу public
+		// 'show_in_nav_menus'     => true, // равен аргументу public
+		// 'show_ui'               => true, // равен аргументу public
+		// 'show_in_menu'          => true, // равен аргументу show_ui
+		// 'show_tagcloud'         => false, // равен аргументу show_ui
+		// 'show_in_quick_edit'    => null, // равен аргументу show_ui
+		'hierarchical'          => false,
+
+		'rewrite'               => true,
+		//'query_var'             => $taxonomy, // название параметра запроса
+		// 'capabilities'          => array(),
+		// 'meta_box_cb'           => null, // html метабокса. callback: `post_categories_meta_box` или `post_tags_meta_box`. false — метабокс отключен.
+		// 'show_admin_column'     => false, // авто-создание колонки таксы в таблице ассоциированного типа записи. (с версии 3.5)
+		'show_in_rest'          => true, // добавить в REST API
+		// 'rest_base'             => null, // $taxonomy
+		// '_builtin'              => false,
+		//'update_count_callback' => '_update_post_term_count',
+	] );
+}
+
+// add_action( 'init', 'skills_for_portfolio' );
+// function skills_for_portfolio(){
+// 	register_taxonomy_for_object_type( 'skills', 'portfolio');
+// }
 function sparrow_setup() {
   add_theme_support(
 'custom-logo', array(

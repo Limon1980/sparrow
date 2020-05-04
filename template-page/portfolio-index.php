@@ -1,9 +1,4 @@
-<?php
-/*
-Template Name: Портфолио
-Template Post Type: post, page, product
-*/
-?>
+
 
 
 

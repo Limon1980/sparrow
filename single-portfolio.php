@@ -39,7 +39,7 @@
                   <ul class="portfolio-meta-list">
 						   <li><span>Date: </span><?php the_field('proj-date')?></li>
 						   <li><span>Client </span><?php the_field('client')?></li>
-						   <li><span>Skills: </span><?php the_field('skils')?></li>
+						   <li><span>Skills: </span><?php the_terms( get_the_ID(), 'skills', '', ' / ', ''); ?></li>
 				      </ul>
 
                   <a class="button" href="http://behance.net">View project</a>

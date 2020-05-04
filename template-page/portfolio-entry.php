@@ -1,9 +1,4 @@
-<?php
-/*
-Template Name: Портфолио-Entry
-Template Post Type: post, page, product
-*/
-?>
+
 <?php get_header();?>
 
 <!-- Page Title
