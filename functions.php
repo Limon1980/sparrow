@@ -196,11 +196,24 @@ function theme_scripts() {
 
 		global $post;
 		$posts = get_posts( array(
-			'numberposts' => 3,
-			'order' => 'DESC',
+			'numberposts' => 5,
+			// 'order' => 'DESC',
+			// запрос 5 последних постов по колличеству просмотров от большего к меньшему
+			'meta_query' => array(
+				'views' => array(
+					'key'     => 'post_meta_views',
+					// 'meta_value_num' => '0',
+					// 'meta_compare' => '>='
+					// 'value'   => 'blue',
+					'compare' => 'EXISTS ',
+				),
+			),
+			'orderby' => 'meta_value_num',
+			'order'   => 'DESC',
 			'post_type'   => 'post',
 			'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
 		) );
+
 
 		foreach( $posts as $post ){
 			setup_postdata($post);
@@ -208,7 +221,7 @@ function theme_scripts() {
 
 
 			
-				echo '<li><time class="date" datetime="">'.get_the_date('F jS, Y' ).' </time><a href="'.get_the_permalink( ).'">'.get_the_title().'</a></li>';
+				echo '<li><time class="date" datetime="">'.get_the_date('F jS, Y' ).' </time><a href="'.get_the_permalink( ).'">'.get_the_title().' </a><i class="fas fa-eye"></i>'.get_post_meta ($post->ID,'post_meta_views',true).'</li>';
 				echo '<span>'. the_excerpt('10'). '</span>';
 
 		}
@@ -253,7 +266,7 @@ add_action('wp_head', 'kama_postviews');
 function kama_postviews() {
 
 /* ------------ Настройки -------------- */
-$meta_key       = 'views';  // Ключ мета поля, куда будет записываться количество просмотров.
+$meta_key       = 'post_meta_views';  // Ключ мета поля, куда будет записываться количество просмотров.
 $who_count      = 0;            // Чьи посещения считать? 0 - Всех. 1 - Только гостей. 2 - Только зарегистрированных пользователей.
 $exclude_bots   = 1;            // Исключить ботов, роботов, пауков и прочую нечесть :)? 0 - нет, пусть тоже считаются. 1 - да, исключить из подсчета.
 

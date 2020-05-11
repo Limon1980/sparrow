@@ -189,8 +189,8 @@ Template Post Type: post, page, product
                 <?php 
                 // параметры по умолчанию
         $posts = get_posts( array(
-          'numberposts' => 3,
-          'category'    => 3,
+          'numberposts' => 5,
+         //  'category'    => 3,
           'order' => 'ASC',
           'post_type'   => 'post',
           'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
@@ -217,7 +217,7 @@ Template Post Type: post, page, product
    <div class="two columns post-meta end">
       <p>
       <time datetime="2014-01-31" class="post-date" pubdate=""><?php the_date('d M, Y' )?></time>
-      <span class="dauthor"><?php the_author(); ?> <i class="fas fa-eye"></i> <?php echo get_post_meta ($post->ID,'views',true); ?></span>
+      <span class="dauthor"><?php the_author(); ?> <i class="fas fa-eye"></i> <?php echo get_post_meta ($post->ID,'post_meta_views',true); ?></span>
       </p>
    </div>
 
