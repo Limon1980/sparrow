@@ -60,6 +60,9 @@ header.woocommerce-products-header .woocommerce-products-header__title {
   align-items: center;
   margin: auto;
 }
+.woocommerce-notices-wrapper {
+  display: none;
+}
 ul.products {
   list-style: none outside;
   display: flex;
