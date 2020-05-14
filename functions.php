@@ -167,9 +167,9 @@ function theme_scripts() {
 	wp_enqueue_script( 'init', get_template_directory_uri(). '/assets/js/init.js', ['jquery'], null, true );
 	wp_enqueue_script( 'modernizr', get_template_directory_uri(). '/assets/js/modernizr.js', null, null, false );
 	wp_enqueue_script( 'fontawesome', '//kit.fontawesome.com/24510c20bc.js', null, null, false );
-//	wp_enqueue_script( 'swiper', '//unpkg.com/swiper/js/swiper.min.js', null, null, false );
-//	wp_enqueue_script( 'swiper2', '//unpkg.com/swiper/js/swiper.min.js', null, null, true );
-	//wp_enqueue_script( 'swiperjs', get_template_directory_uri(). '/assets/js/swiper.js', ['jquery'], null, true );
+	wp_enqueue_script( 'swiper', '//unpkg.com/swiper/js/swiper.min.js', null, null, false );
+	wp_enqueue_script( 'swiper2', '//unpkg.com/swiper/js/swiper.min.js', null, null, true );
+	wp_enqueue_script( 'swiperjs', get_template_directory_uri(). '/assets/js/swiper.js', ['jquery'], null, true );
   }
 
   function register_my_widgets(){

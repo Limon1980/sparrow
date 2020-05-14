@@ -54,7 +54,8 @@ echo '
 
             
                     ?>
-
+   </ul>
+   </div>
 
    </section> <!-- Intro Section End-->
 
@@ -63,6 +64,8 @@ echo '
    <section id="info">
 
       <div class="row">
+
+     
 
          <div class="bgrid-quarters s-bgrid-halves">
 
@@ -73,6 +76,9 @@ echo '
               Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
               </p>
            </div>
+
+        
+
 
            <div class="columns">
               <h2>Responsive.</h2>

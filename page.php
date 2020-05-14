@@ -103,10 +103,13 @@
 
          </div> <!-- Primary End-->
 
+         
+
          <div id="secondary" class="four columns end">
 
                <aside id="sidebar">
                <?php get_sidebar();?>
+               ?>
 
                </aside> <!-- Sidebar End -->
 
