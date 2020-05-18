@@ -15,21 +15,7 @@ Template Post Type: post, page, product
 		   <ul class="slides">
 
          
-      <?php 
-  global $wpdb3;
 
-include 'const.php';
-  
-  // если не удалось подключиться, и нужно оборвать PHP с сообщением об этой ошибке
-  if( ! empty($wpdb3->error) )
-     wp_die( $wpdb3->error );
-  
-  // Готово, теперь используем функции класса wpdb
-  $results = $wpdb3->get_results( "SELECT link FROM vk_parser ORDER BY id DESC LIMIT 5" );
- // var_dump($results);
-
- foreach($results as $key){
-echo '
   
 			   <!-- Slide -->
 			   <li>
@@ -38,7 +24,7 @@ echo '
 						   <div class="slider-text">
                         <h1>Free amazing site template<span>.</span></h1>
                         <div class="slider-image">
-                        <img src="'.$key->link.'" alt="" width=30%/>
+                        <img src="" alt="" width=30%/>
                      </div>
 							   <p>Aenean condimentum, lacus sit amet luctus lobortis, dolores et quas molestias excepturi
                         enim tellus ultrices elit, amet consequat enim elit noneas sit amet luctu. lacus sit amet luctus lobortis, dolores et quas molestias excepturi
@@ -48,12 +34,7 @@ echo '
 					   </div>
 				   </div>
 			   </li>
-            ';
 
-            }
-
-            
-                    ?>
    </ul>
    </div>
 
