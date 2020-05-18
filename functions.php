@@ -351,10 +351,68 @@ add_action( 'woocommerce_shop_loop_item_title', 'woocommerce_show_product_loop_s
 
 	// hover cart
 
+	add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_open', 5 );
 	add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_title', 5 );
+	add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5 );
 	add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_price', 10 );
+	add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_open', 15 );
 	add_action( 'woocommerce_after_shop_loop_item', 'sparrow_short_description', 15 );
+	add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 15 );
 	add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 20 );
+
+	function true_register_wp_sidebars() {
+ 
+		/* В боковой колонке - первый сайдбар */
+		register_sidebar(
+			array(
+				'id' => 'true_side', // уникальный id
+				'name' => 'Боковая колонка', // название сайдбара
+				'description' => 'Перетащите сюда виджеты, чтобы добавить их в сайдбар.', // описание
+				'before_widget' => '<div id="%1$s" class="side widget %2$s">', // по умолчанию виджеты выводятся <li>-списком
+				'after_widget' => '</div>',
+				'before_title' => '<h3 class="widget-title">', // по умолчанию заголовки виджетов в <h2>
+				'after_title' => '</h3>'
+			)
+		);
+	 
+	}
+	 
+	add_action( 'widgets_init', 'true_register_wp_sidebars' );
+
+
+// remove breadcrumb single-product
+
+remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
+
+// add breadcrumb single-product
+add_action( 'sparrom_woocommerce_before_top_content', 'woocommerce_breadcrumb', 20 );
+
+// вывод title single product
+add_action( 'sparrom_woocommerce_before_top_content', 'art_woo_add_custom_fields', 25 );
+function art_woo_add_custom_fields() {
+	global $product;
+	echo '<div class="options_group">';// Группировка полей 
+	 //...здесь добавляем нужные функции
+	 echo '<h2>МАГАЗИН</h2>';
+	echo '</div>';
+}
+
+
+//conten product_list_widget
+
+remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10 );
+remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20 );
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
+
+add_action( 'woocommerce_single_product_summary', create_function('', 'echo "<div class=\"sparrow-product\">";'), 4,2 );
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5);
+add_action( 'woocommerce_single_product_summary', create_function('', 'echo "<div class=\"sparrow-product-price\">";'), 6,2 );
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 9);
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10);
+add_action( 'woocommerce_single_product_summary', create_function('', 'echo "</div>";'), 10,2 );
+add_action( 'woocommerce_single_product_summary', create_function('', 'echo "</div>";'), 11,2 );
+add_action( 'woocommerce_single_product_summary', 'woocommerce_show_product_images', 15);
+
 
 	function sparrow_short_description(){
 		echo the_excerpt().'<br>';
